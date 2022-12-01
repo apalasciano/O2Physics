@@ -236,7 +236,7 @@ struct HfCandidateCreatorBplus {
         massD0Pi = RecoDecay::m(std::move(arrayMomenta), array{massD0, massPi});
         hMassBplusToD0Pi->Fill(massD0Pi);
         // B+ candidate invariant mass selction window
-        if(massD0Pi < 4.5 || massD0Pi > 6.) 
+        if (massD0Pi < 4.5 || massD0Pi > 6.)
           continue;
 
         // fill candidate table rows
