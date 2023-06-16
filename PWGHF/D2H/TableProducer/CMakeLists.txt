@@ -9,6 +9,11 @@
 # granted to it by virtue of its status as an Intergovernmental Organization
 # or submit itself to any jurisdiction.
 
+o2physics_add_dpl_workflow(data-creator-d0-pi-reduced
+                    SOURCES dataCreatorD0PiReduced.cxx
+                    PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore O2::DCAFitter
+                    COMPONENT_NAME Analysis)
+
 o2physics_add_dpl_workflow(data-creator-dplus-pi-reduced
                     SOURCES dataCreatorDplusPiReduced.cxx
                     PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore O2::DCAFitter
@@ -21,5 +26,15 @@ o2physics_add_dpl_workflow(candidate-creator-b0-reduced
 
 o2physics_add_dpl_workflow(candidate-selector-b0-to-d-pi-reduced
                     SOURCES candidateSelectorB0ToDPiReduced.cxx
+                    PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore
+                    COMPONENT_NAME Analysis)
+
+o2physics_add_dpl_workflow(candidate-creator-bplus-reduced
+                    SOURCES candidateCreatorBplusReduced.cxx
+                    PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore O2::DCAFitter
+                    COMPONENT_NAME Analysis)
+
+o2physics_add_dpl_workflow(candidate-selector-bplus-to-d0-pi-reduced
+                    SOURCES candidateSelectorBplusToD0PiReduced.cxx
                     PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore
                     COMPONENT_NAME Analysis)
