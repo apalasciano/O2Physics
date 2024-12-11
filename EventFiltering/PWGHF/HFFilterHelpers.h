@@ -209,7 +209,7 @@ constexpr float cutsHighPtThresholds[1][2] = {{8., 8.}}; // 2-prongs, 3-prongs
 static const std::vector<std::string> labelsColumnsHighPtThresholds = {"2Prongs", "3Prongs"};
 
 // beauty
-constexpr float cutsDeltaMassB[1][kNBeautyParticles] = {{0.4, 0.4, 0.4, 0.4, 0.4, 0.4}};                                                      // B+, B0, B0toDstar, Bs, Lb, Xib
+constexpr float cutsDeltaMassB[1][kNBeautyParticles] = {{0.4, 0.4, 0.4, 0.4, 0.4, 0.4}}; // B+, B0, B0toDstar, Bs, Lb, Xib
 static const std::vector<std::string> labelsColumnsDeltaMassB = {"Bplus", "BZero", "BZeroToDstar", "Bs", "Lb", "Xib"};
 
 namespace hf_trigger_cuts_presel_beauty
@@ -1830,7 +1830,7 @@ inline int HfFilterHelper::setVtxConfiguration(T1 vertexer)
   vertexer.setMaxR(200.);
   vertexer.setMaxDZIni(4.);
   vertexer.setMinParamChange(1.e-3);
-  vertexer.setMinRelChi2Change( 0.9);
+  vertexer.setMinRelChi2Change(0.9);
   vertexer.setUseAbsDCA(true);
   vertexer.setWeightedFinalPCA(false);
   return 1;
