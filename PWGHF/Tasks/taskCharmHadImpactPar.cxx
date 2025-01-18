@@ -38,15 +38,15 @@ namespace o2::aod
 {
 namespace hf_charm_cand_lite
 {
-DECLARE_SOA_COLUMN(M, m, float);                          //! Invariant mass of candidate (GeV/c2)
-DECLARE_SOA_COLUMN(Pt, pt, float);                        //! Transverse momentum of candidate (GeV/c)
-DECLARE_SOA_COLUMN(Y, y, float);                          //! Rapidity of candidate
-DECLARE_SOA_COLUMN(Eta, eta, float);                      //! Pseudorapidity of candidate
-DECLARE_SOA_COLUMN(Phi, phi, float);                      //! Azimuth angle of candidate
-DECLARE_SOA_COLUMN(MlScoreBkg, mlScoreBkg, float);        //! ML score for background class
-DECLARE_SOA_COLUMN(MlScorePrompt, mlScorePrompt, float);     //! ML Prompt score for prompt class
-DECLARE_SOA_COLUMN(MlScoreNonPrompt, mlScoreNonPrompt, float);  //! ML Non Prompt score for non prompt class
-}
+DECLARE_SOA_COLUMN(M, m, float);                               //! Invariant mass of candidate (GeV/c2)
+DECLARE_SOA_COLUMN(Pt, pt, float);                             //! Transverse momentum of candidate (GeV/c)
+DECLARE_SOA_COLUMN(Y, y, float);                               //! Rapidity of candidate
+DECLARE_SOA_COLUMN(Eta, eta, float);                           //! Pseudorapidity of candidate
+DECLARE_SOA_COLUMN(Phi, phi, float);                           //! Azimuth angle of candidate
+DECLARE_SOA_COLUMN(MlScoreBkg, mlScoreBkg, float);             //! ML score for background class
+DECLARE_SOA_COLUMN(MlScorePrompt, mlScorePrompt, float);       //! ML Prompt score for prompt class
+DECLARE_SOA_COLUMN(MlScoreNonPrompt, mlScoreNonPrompt, float); //! ML Non Prompt score for non prompt class
+} // namespace hf_charm_cand_lite
 
 DECLARE_SOA_TABLE(HfCharmCandLites, "AOD", "HFCHARMCANDLITE", //! Table with some B+ properties
                   hf_charm_cand_lite::M,
@@ -57,7 +57,7 @@ DECLARE_SOA_TABLE(HfCharmCandLites, "AOD", "HFCHARMCANDLITE", //! Table with som
                   hf_charm_cand_lite::MlScoreBkg,
                   hf_charm_cand_lite::MlScorePrompt,
                   hf_charm_cand_lite::MlScoreNonPrompt);
-}
+} // namespace o2::aod
 
 struct HfTaskCharmHadImpactPar {
   Produces<aod::HfCharmCandLites> hfCharmCandLite;
@@ -66,7 +66,7 @@ struct HfTaskCharmHadImpactPar {
   Configurable<int> fillLightTreeCandidate{"fillLightTreeCandidate", 0, "Flag to store charm hadron features"};
   ConfigurableAxis axisPt{"axisPt", {0.f, 1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 8.f, 10.f, 12.f, 16.f, 24.f, 36.f, 50.f}, "axis for pT of charm hadron"};
   ConfigurableAxis axisMass{"axisMass", {250, 1.65f, 2.15f}, "axis for mass of charm hadron"};
-  ConfigurableAxis axisPhi{"axisPhi", {100, 0.f, 2*PI}, "axis for azimuthal angle of charm hadron"};
+  ConfigurableAxis axisPhi{"axisPhi", {100, 0.f, 2 * PI}, "axis for azimuthal angle of charm hadron"};
   ConfigurableAxis axisEta{"axisEta", {100, -2.f, 2.f}, "axis for pseudorapidity of charm hadron"};
   ConfigurableAxis axisImpPar{"axisImpPar", {2000, -500.f, 500.f}, "axis for impact-parameter of charm hadron"};
   ConfigurableAxis axisMlScore0{"axisMlScore0", {100, 0.f, 1.f}, "axis for ML output score 0"};
@@ -186,15 +186,15 @@ struct HfTaskCharmHadImpactPar {
       }
     }
     hfCharmCandLite(
-          // Charm candidate meson features
-          invMass,
-          candidate.pt(),
-          yCand,
-          candidate.eta(),
-          candidate.phi(),
-          outputMl[0],
-          outputMl[1],
-          outputMl[2]);
+      // Charm candidate meson features
+      invMass,
+      candidate.pt(),
+      yCand,
+      candidate.eta(),
+      candidate.phi(),
+      outputMl[0],
+      outputMl[1],
+      outputMl[2]);
   }
 
   /// \param candidates are reconstructed candidates
@@ -203,7 +203,7 @@ struct HfTaskCharmHadImpactPar {
   {
     for (auto const& candidate : candidates) {
       fillSparse<channel, withMl>(candidate);
-      if(fillLightTreeCandidate){
+      if (fillLightTreeCandidate) {
         fillTree<channel, withMl>(candidate);
       }
     }
